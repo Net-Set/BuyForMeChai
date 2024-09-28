@@ -1,41 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 
@@ -55,4 +18,51 @@
   word-wrap: break-word;  /* Allows long words to be broken and wrap onto the next line */
   white-space: normal;     /* Ensures the text is displayed in normal mode, wrapping as necessary */
   max-width: 200px;        /* Optional: Set a max width to control the width of the column */
+}
+
+
+.bg-dark {
+  background-color: #343a40 !important; /* Bootstrap dark background */
+  
+}
+
+.text-light {
+  color: #ffffff !important; /* Light text color */
+}
+
+.bg-light {
+  background-color: #f8f9fa !important; /* Bootstrap light background */
+}
+
+.text-dark {
+  color: #000000 !important; /* Dark text color */
+}
+
+
+table.rounded-corners {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 10px;
+  border: 1px solid black;
+ }
+
+table.rounded-corners th:not(:last-child),
+table.rounded-corners td:not(:last-child) {
+ border-right: 1px solid black;
+}
+
+
+/* Apply a border to the bottom of all but the last row */
+table.rounded-corners>thead>tr:not(:last-child)>th,
+table.rounded-corners>thead>tr:not(:last-child)>td,
+table.rounded-corners>tbody>tr:not(:last-child)>th,
+table.rounded-corners>tbody>tr:not(:last-child)>td,
+table.rounded-corners>tfoot>tr:not(:last-child)>th,
+table.rounded-corners>tfoot>tr:not(:last-child)>td,
+table.rounded-corners>tr:not(:last-child)>td,
+table.rounded-corners>tr:not(:last-child)>th,
+table.rounded-corners>thead:not(:last-child),
+table.rounded-corners>tbody:not(:last-child),
+table.rounded-corners>tfoot:not(:last-child) {
+ border-bottom: 1px solid rgb(207, 205, 205);
 }

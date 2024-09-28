@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
-
+import '../App.css';
 // ABI of your contract (ensure this is correct)
 const contractABI = [
   { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
@@ -10,7 +10,7 @@ const contractABI = [
 
 const contractAddress = "0x072901Bf5BA9ef577a87B232de4B1b437f601C08"; // Replace with your contract address
 
-const MemosList = () => {
+const MemosList = ({ isDarkMode }) => {
   const [memos, setMemos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // State to hold any error messages
@@ -52,15 +52,24 @@ const MemosList = () => {
     fetchMemos();
   }, []);
 
+  // Optional: Set an interval to fetch memos every X seconds for real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchMemos();
+    }, 10000); // Fetch every 10 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="container mt-4">
+    <div className={`container mt-4 ${isDarkMode ? 'text-white' : 'text-dark'}`}>
       <h3>Memos</h3>
       {loading && <p>Loading...</p>}
       {error && <p className="text-danger">{error}</p>} {/* Display error message */}
       {!loading && !error && memos.length === 0 && <p>No memos found.</p>} {/* No memos message */}
       {!loading && !error && memos.length > 0 && (
-        <div className="table-responsive"> {/* Responsive table wrapper */}
-          <table className="table table-bordered">
+        <div className="table-responsive rounded"> {/* Responsive table wrapper */}
+          <table className={`table table-bordered rounded-corners ${isDarkMode ? 'table-dark rounded' : ' rounded'}`}>
             <thead>
               <tr>
                 <th>Name</th>
