@@ -50,3 +50,9 @@
   display: block; /* Ensure the label takes up the full width */
   width: 100%;
 }
+
+.wrap-text {
+  word-wrap: break-word;  /* Allows long words to be broken and wrap onto the next line */
+  white-space: normal;     /* Ensures the text is displayed in normal mode, wrapping as necessary */
+  max-width: 200px;        /* Optional: Set a max width to control the width of the column */
+}

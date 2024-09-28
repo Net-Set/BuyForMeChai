@@ -8,24 +8,9 @@ const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constru
 
 const contractAddress = "0x072901Bf5BA9ef577a87B232de4B1b437f601C08"; // Replace with your contract address
 
-function CustomForm() {
+function CustomForm({ walletAddress }) { // Accept walletAddress as a prop
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
-  const [walletAddress, setWalletAddress] = useState(null);
-
-  // Connect to MetaMask
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setWalletAddress(accounts[0]);
-      } catch (error) {
-        console.error('Error connecting to MetaMask:', error);
-      }
-    } else {
-      alert('MetaMask not detected');
-    }
-  };
 
   // Send a transaction to the contract
   const buyChai = async () => {
@@ -34,21 +19,14 @@ function CustomForm() {
       return;
     }
 
-    // Check if ethers is defined
-    if (typeof ethers === 'undefined') {
-      alert('Ethers library is not loaded properly.');
-      return;
-    }
-
     if (name && message) {
       try {
-        const provider = new ethers.BrowserProvider(window.ethereum); // Updated line
+        const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-        // Send transaction with some value (e.g., 0.01 ETH)
         const tx = await contract.buychai(name, message, {
-          value: ethers.parseEther('0.01') // Updated line
+          value: ethers.parseEther('0.01')
         });
 
         await tx.wait();
@@ -63,7 +41,6 @@ function CustomForm() {
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     await buyChai();
@@ -71,11 +48,7 @@ function CustomForm() {
 
   return (
     <div>
-      <h6  className="text-right-label">Connected Wallet: {walletAddress || 'Not Connected'}</h6>
-      <Button onClick={connectWallet} variant="success">
-        Connect Wallet
-      </Button>
-
+      <h6 className="text-left-label">Connected Wallet: {walletAddress || 'Not Connected'}</h6>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGroupName">
           <Form.Label className="text-left-label">Name</Form.Label>
@@ -98,7 +71,7 @@ function CustomForm() {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" className="text-left-label" type="submit">
           Submit
         </Button>
       </Form>
