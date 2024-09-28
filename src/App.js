@@ -11,7 +11,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import MemosList from './components/memoslist';
 import { ThemeProvider, createTheme } from '@mui/material/styles'; // Import ThemeProvider
-
+import Logo from './Image/BuyForMeLogo.png';
 function App() {
   const [walletAddress, setWalletAddress] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -44,7 +44,7 @@ function App() {
       <Router>
         <Navbar expand="lg" className={isDarkMode ? 'bg-dark' : 'bg-body-tertiary'}>
           <Container>
-            <Navbar.Brand as={Link} to="/" className={isDarkMode ? 'text-light' : 'text-dark'}>BuyForMeChai</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/" className={isDarkMode ? 'text-light' : 'text-dark'}><img src={Logo} style={{width:'100px',height:'40px'}}alt="BuyForMeChai" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
