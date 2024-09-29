@@ -66,3 +66,18 @@ table.rounded-corners>tbody:not(:last-child),
 table.rounded-corners>tfoot:not(:last-child) {
  border-bottom: 1px solid rgb(207, 205, 205);
 }
+
+
+
+/* App.css */
+
+body.light-mode {
+  background-color: #f0f0f0; /* Light mode background */
+  color: #000000; /* Light mode text color */
+}
+
+body.dark-mode {
+  background-color: #121212; /* Dark mode background */
+  color: #ffffff; /* Dark mode text color */
+}
+
